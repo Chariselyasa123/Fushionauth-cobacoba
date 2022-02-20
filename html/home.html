@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>selamat datang!!!</h1>
+<p id="email"></p>
+
+<button id="logout">logout</button>
+
+<script src="./assets/fusionauth-typescript-client.min.js"></script>
+<script src="./assets/fusionauth.js"></script>
+<script src="./assets/main.js"></script>
+<script>
+    const user = JSON.parse(sessionStorage.getItem('user'));
+
+    document.querySelector('#email').textContent = user.email;
+
+    document.querySelector('#logout').addEventListener('click', function (e) {
+        sessionStorage.removeItem("token");
+        window.location = 'http://54.169.12.184:9011/oauth2/logout?client_id=94ced9a2-e7b1-4270-822e-38db700613f3';
+    })
+</script>
+</body>
+</html>
