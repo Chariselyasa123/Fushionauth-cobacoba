@@ -1,0 +1,34 @@
+service: fusionauth-proxy # NOTE: update this with your service name
+
+custom:
+  functimeout:
+    prod: 120
+    dev: 10
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-1
+  lambdaHashingVersion: 20201221
+
+functions:
+  app:
+    handler: server.handler
+    description: "Proxy for fusionauth."
+    timeout: ${self:custom.functimeout.${self:provider.stage}, '10'}
+    # The `events` block defines how to trigger the http events
+    events:
+      - http:
+          path: /oauth/authorize
+          method: get
+      - http:
+          path: /oauth/callback
+          method: get
+      - http:
+          path: /user
+          method: post
+
+plugins:
+  - serverless-offline
+  - serverless-iam-roles-per-function
