@@ -20,11 +20,7 @@ router.get('/callback', async (req, res) => {
             'ikZSSOwuNsserl5yWJvpAT1E9g_7xXc0_Lkt36_WCQo',
             'http://localhost:3000/dev/oauth/callback'
         );
-
-        res.json({
-            message: 'success redirect'
-        })
-        res.redirect('http://127.0.0.1:5500/index.html?token=' + response.response.access_token);
+        res.redirect('http://127.0.0.1:5500/html/index.html?token=' + response.response.access_token);
     } catch (e) {
         res.json({
             error: e.message
