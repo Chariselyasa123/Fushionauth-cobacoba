@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 const oauth = require('./routes/oauth');
 const user = require('./routes/user');
 
-app.use('/oauth', oauth);
+app.use('/oauth2', oauth);
 app.use('/user', user);
 
 module.exports.handler = serverless(app);

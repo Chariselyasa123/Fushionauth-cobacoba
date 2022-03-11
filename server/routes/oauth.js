@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const url = 'http://54.169.12.184:9011';
+const url = 'http://54.169.36.102:9011';
 const fusionAuth = require('../lib/FusionAuth');
 
 router.get(`/authorize`, (req, res) => {
@@ -11,15 +11,16 @@ router.get(`/authorize`, (req, res) => {
     })
 });
 
-router.get('/callback', async (req, res) => {
+router.get('/callback', async(req, res) => {
     const { code } = req.query;
     try {
         const response = await fusionAuth.exchangeOAuthCodeForAccessToken(
             code,
             '94ced9a2-e7b1-4270-822e-38db700613f3',
             'ikZSSOwuNsserl5yWJvpAT1E9g_7xXc0_Lkt36_WCQo',
-            'http://localhost:3000/dev/oauth/callback'
+            'http://localhost:3000/dev/oauth2/callback'
         );
+        console.log(response.response.access_token);
         res.redirect('http://127.0.0.1:5500/html/index.html?token=' + response.response.access_token);
     } catch (e) {
         res.json({

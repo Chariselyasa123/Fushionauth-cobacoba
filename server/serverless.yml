@@ -20,10 +20,10 @@ functions:
     # The `events` block defines how to trigger the http events
     events:
       - http:
-          path: /oauth/authorize
+          path: /oauth2/authorize
           method: get
       - http:
-          path: /oauth/callback
+          path: /oauth2/callback
           method: get
       - http:
           path: /user

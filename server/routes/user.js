@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const url = 'http://54.169.12.184:9011';
+const url = 'http://54.169.36.102:9011';
 const fusionAuth = require('../lib/FusionAuth');
 
-router.post('/', async (req, res) => {
+router.post('/', async(req, res) => {
     const token = req.body.token;
     const clientId = req.body.client_id;
 

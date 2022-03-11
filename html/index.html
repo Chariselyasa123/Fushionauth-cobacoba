@@ -16,10 +16,10 @@
     <script src="./assets/fusionauth.js"></script>
     <script src="./assets/main.js"></script>
     <script>
-        document.querySelector('#login').addEventListener('click', function (e) {
-            window.location = 'http://54.169.12.184:9011/oauth2/authorize?response_type=code&client_id=94ced9a2-e7b1-4270-822e-38db700613f3&redirect_uri=http://localhost:3000/dev/oauth/callback'
+        document.querySelector('#login').addEventListener('click', function(e) {
+            window.location = 'http://54.169.36.102:9011/oauth2/authorize?client_id=94ced9a2-e7b1-4270-822e-38db700613f3&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdev%2Foauth2%2Fcallback'
         })
-        if(theToken){
+        if (theToken) {
             window.location.replace('./home.html')
         }
     </script>
